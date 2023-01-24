@@ -47,7 +47,7 @@ list(APPEND CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
 include(CPack)
 include(GNUInstallDirs)
 include(ECMInstallIcons)
-include(ECMConfiguredInstall)
+# include(ECMConfiguredInstall)
 include(KDEInstallDirs)
 
 find_package(PolkitQt5-1 REQUIRED)
@@ -147,7 +147,15 @@ install(TARGETS ${PROJECT_NAME}_helper DESTINATION ${KDE_INSTALL_LIBEXECDIR})
 install(FILES data/dev.jonmagon.kdiskmark.helperinterface.conf DESTINATION ${KDE_INSTALL_DBUSDIR}/system.d)
 
 install(FILES data/dev.jonmagon.kdiskmark.helper.policy DESTINATION ${POLKITQT-1_POLICY_FILES_INSTALL_DIR})
-ecm_install_configured_files(
-    INPUT data/dev.jonmagon.kdiskmark.helperinterface.service.in
-    DESTINATION ${KDE_INSTALL_DBUSDIR}/system-services
-)
+# ecm_install_configured_files(
+#     INPUT data/dev.jonmagon.kdiskmark.helperinterface.service.in
+#     DESTINATION ${KDE_INSTALL_DBUSDIR}/system-services
+# )
+
+file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/dev.jonmagon.kdiskmark.helperinterface.service
+"[D-BUS Service]
+Name=dev.jonmagon.kdiskmark.helperinterface
+Exec=${KDE_INSTALL_FULL_LIBEXECDIR}/kdiskmark_helper
+User=root
+")
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/dev.jonmagon.kdiskmark.helperinterface.service DESTINATION ${KDE_INSTALL_DBUSDIR}/system-services)
