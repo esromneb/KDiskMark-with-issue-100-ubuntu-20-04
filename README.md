@@ -1,3 +1,10 @@
+# Ubuntu 20.04 instructions
+```bash
+sudo apt install qt5-default qttools5-dev qttools5-dev-tools ecm extra-cmake-modules libpolkit-qt5-1-dev
+```
+
+* then the usual cmake stuff
+
 # KDiskMark
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-orange.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![GitHub (pre-)release](https://img.shields.io/github/release/JonMagon/KDiskMark/all.svg)](https://github.com/JonMagon/KDiskMark/releases)
